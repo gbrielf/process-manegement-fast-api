@@ -26,7 +26,7 @@ class Processo (models.Model):
             return f"{self.data_criacao} - {self.numero_processo} - {self.vara}\ncomarca: {self.comarca}\nassunto: {self.assunto}\nstatus:{self.status}"
         except Exception:
             return str(self.numero_processo)
-        
+
 
 class Audiencia(models.Model):
     AUDIENCIA_TIPO = [
@@ -38,10 +38,10 @@ class Audiencia(models.Model):
     data_criacao = models.DateTimeField()
     tipo = models.CharField(max_length=11, choices=AUDIENCIA_TIPO)
     local = models.CharField(max_length=200),
-    processos = models.ForeignKey(Processo, on_delete=models.CASCADE, related_name="processo")
+    processo = models.ForeignKey(Processo, on_delete=models.CASCADE, related_name="processo")
 
     def __str__(self):
         try:
             return f"data: {self.data_criacao}\ntipo: {self.tipo}\nlocal: {self.local}\nprocessos envolvidos: {self.processos}"
         except Exception:
-            return str(self.local - self.data_criacao - self.processos)
+            return str(self.local - self.data_criacao - self.processo)
