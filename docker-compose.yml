@@ -1,0 +1,17 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    ports:
+      - "8000:8000"
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: process_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      DB_HOST: db
+    ports:
+      - "5432:5432"

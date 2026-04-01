@@ -1,0 +1,34 @@
+{
+    "name": "API de Gerenciamento de Processos Django",
+    
+    "dockerComposeFile": "-./docker-compose.yml",
+
+    "workspaceFolder": "/workspace",
+
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "terminal.integrated.profiles.linux":{
+                    "bash": {
+                        "path": "/bin/bash"
+                    }
+                }
+            }
+        },
+        "extensions":[
+            "esbenp.prettier-vscode",
+            "ms-azuretools.vscode-docker",
+            "ms-vscode-remote.remote-containers",
+            "ms-python.vscode-pylance",
+            "dracula-theme.theme-dracula",
+            "ms-python.flake8",
+            "PKief.material-icon-theme"
+        ]
+    },
+
+    "forwardPorts": [8000],
+    "remoteUser": "vscode",
+
+    "postCreateCommand": "pip install -r requirements.txt"
+}
